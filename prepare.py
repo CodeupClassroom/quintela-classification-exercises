@@ -80,6 +80,7 @@ def clean_titanic_data(df):
 
     # Uses one-hot encoding to create dummies of string columns for future modeling 
     dummy_df = pd.get_dummies(df[['sex', 'embark_town']], dummy_na=False, drop_first=[True])
+    df = df.drop(columns=['sex', 'embark_town'])
     df = pd.concat([df, dummy_df], axis=1)
 
     return df
